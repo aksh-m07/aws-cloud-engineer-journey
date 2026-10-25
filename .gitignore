@@ -1,3 +1,5 @@
 .DS_Store
 *.csv
 aws-cloud-engineer-intern-handbook.pdf
+*.pem
+*.sql
