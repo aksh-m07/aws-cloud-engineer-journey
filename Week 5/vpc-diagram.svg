@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1060" viewBox="0 0 1680 1060" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#A32D2D"/></marker>
+    <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#534AB7"/></marker>
+  </defs>
+  <rect width="1680" height="1060" fill="#FFFFFF"/>
+
+  <text x="40" y="48" font-size="24" font-weight="bold" fill="#2C2C2A">Week 5: Custom VPC with bastion host and NAT Gateway</text>
+
+  <rect x="400" y="80" width="1260" height="950" rx="18" fill="#F6F5F0" stroke="#5F5E5A" stroke-width="2"/>
+  <text x="520" y="118" font-size="20" font-weight="bold" fill="#2C2C2A">training-vpc   10.0.0.0/16   (region us-east-2)</text>
+
+  <rect x="540" y="145" width="520" height="865" rx="12" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <text x="560" y="1000" font-size="16" fill="#5F5E5A">Availability Zone us-east-2a</text>
+  <rect x="1100" y="145" width="520" height="865" rx="12" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <text x="1120" y="1000" font-size="16" fill="#5F5E5A">Availability Zone us-east-2b</text>
+
+  <rect x="560" y="200" width="480" height="320" rx="10" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.5"/>
+  <text x="580" y="228" font-size="17" font-weight="bold" fill="#27500A">Public subnet 1   10.0.0.0/20</text>
+  <rect x="1120" y="200" width="480" height="320" rx="10" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.5"/>
+  <text x="1140" y="228" font-size="17" font-weight="bold" fill="#27500A">Public subnet 2   10.0.16.0/20</text>
+  <text x="1140" y="252" font-size="14" fill="#3B6D11">Not used in this lab</text>
+  <text x="1140" y="276" font-size="14" fill="#3B6D11">Shares route table training-rtb-public</text>
+
+  <rect x="560" y="580" width="480" height="380" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+  <text x="580" y="608" font-size="17" font-weight="bold" fill="#0C447C">Private subnet 1   10.0.128.0/20</text>
+  <text x="580" y="632" font-size="14" fill="#185FA5">No instances in this lab</text>
+  <rect x="1120" y="580" width="480" height="380" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+  <text x="1140" y="608" font-size="17" font-weight="bold" fill="#0C447C">Private subnet 2   10.0.144.0/20</text>
+
+  <rect x="40" y="80" width="230" height="100" rx="10" fill="#FFFFFF" stroke="#444441" stroke-width="1.5"/>
+  <text x="155" y="115" font-size="17" font-weight="bold" fill="#2C2C2A" text-anchor="middle">Your laptop</text>
+  <text x="155" y="140" font-size="14" fill="#5F5E5A" text-anchor="middle">Key: week5.pem</text>
+  <text x="155" y="161" font-size="14" fill="#5F5E5A" text-anchor="middle">ssh -A (agent forwarding)</text>
+
+  <rect x="40" y="260" width="230" height="80" rx="40" fill="#FFFFFF" stroke="#444441" stroke-width="1.5"/>
+  <text x="155" y="306" font-size="17" font-weight="bold" fill="#2C2C2A" text-anchor="middle">Internet</text>
+
+  <rect x="320" y="265" width="170" height="70" rx="10" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
+  <text x="405" y="295" font-size="16" font-weight="bold" fill="#3C3489" text-anchor="middle">Internet Gateway</text>
+  <text x="405" y="318" font-size="13" fill="#534AB7" text-anchor="middle">training-igw</text>
+
+  <rect x="590" y="250" width="200" height="100" rx="8" fill="#FFFFFF" stroke="#444441" stroke-width="1.5"/>
+  <text x="690" y="280" font-size="16" font-weight="bold" fill="#2C2C2A" text-anchor="middle">Bastion host</text>
+  <text x="690" y="303" font-size="13" fill="#5F5E5A" text-anchor="middle">t3.micro  10.0.0.232</text>
+  <text x="690" y="323" font-size="13" fill="#5F5E5A" text-anchor="middle">+ auto public IP</text>
+  <text x="690" y="342" font-size="13" fill="#5F5E5A" text-anchor="middle">SG: bastion-sg</text>
+
+  <rect x="815" y="250" width="200" height="100" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
+  <text x="915" y="282" font-size="16" font-weight="bold" fill="#3C3489" text-anchor="middle">NAT Gateway</text>
+  <text x="915" y="306" font-size="13" fill="#534AB7" text-anchor="middle">training-nat (zonal)</text>
+  <text x="915" y="328" font-size="13" fill="#534AB7" text-anchor="middle">Elastic IP attached</text>
+
+  <rect x="815" y="390" width="200" height="110" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.2"/>
+  <text x="830" y="414" font-size="13" font-weight="bold" fill="#633806">training-rtb-public</text>
+  <text x="830" y="440" font-size="13" fill="#633806">10.0.0.0/16 → local</text>
+  <text x="830" y="463" font-size="13" fill="#633806">0.0.0.0/0 → IGW</text>
+
+  <rect x="580" y="660" width="440" height="110" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.2"/>
+  <text x="595" y="684" font-size="13" font-weight="bold" fill="#633806">training-rtb-private1-us-east-2a</text>
+  <text x="595" y="710" font-size="13" fill="#633806">10.0.0.0/16 → local</text>
+  <text x="595" y="733" font-size="13" fill="#633806">0.0.0.0/0 → NAT Gateway</text>
+  <text x="595" y="756" font-size="13" fill="#633806">S3 prefix list → S3 gateway endpoint</text>
+
+  <rect x="1150" y="625" width="220" height="100" rx="8" fill="#FFFFFF" stroke="#444441" stroke-width="1.5"/>
+  <text x="1260" y="655" font-size="16" font-weight="bold" fill="#2C2C2A" text-anchor="middle">Private server</text>
+  <text x="1260" y="678" font-size="13" fill="#5F5E5A" text-anchor="middle">t3.micro  10.0.154.238</text>
+  <text x="1260" y="698" font-size="13" fill="#5F5E5A" text-anchor="middle">No public IP</text>
+  <text x="1260" y="717" font-size="13" fill="#5F5E5A" text-anchor="middle">SG: private-sg</text>
+
+  <rect x="1150" y="770" width="430" height="120" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.2"/>
+  <text x="1165" y="794" font-size="13" font-weight="bold" fill="#633806">training-rtb-private2-us-east-2b</text>
+  <text x="1165" y="820" font-size="13" fill="#633806">10.0.0.0/16 → local</text>
+  <text x="1165" y="843" font-size="13" fill="#633806">0.0.0.0/0 → NAT Gateway</text>
+  <text x="1165" y="866" font-size="13" fill="#633806">S3 prefix list → S3 gateway endpoint</text>
+
+  <line x1="155" y1="180" x2="155" y2="256" stroke="#A32D2D" stroke-width="3" marker-end="url(#ar)"/>
+  <line x1="270" y1="300" x2="316" y2="300" stroke="#A32D2D" stroke-width="3" marker-end="url(#ar)"/>
+  <line x1="490" y1="300" x2="586" y2="300" stroke="#A32D2D" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="498" y="290" font-size="13" font-weight="bold" fill="#A32D2D">SSH :22</text>
+
+  <path d="M690 350 L690 553 L1072 553 L1072 690 L1146 690" fill="none" stroke="#A32D2D" stroke-width="3" stroke-dasharray="10 6" marker-end="url(#ar)"/>
+  <text x="705" y="546" font-size="13" font-weight="bold" fill="#A32D2D">Hop 2: SSH to 10.0.154.238 (local route)</text>
+
+  <path d="M1370 660 L1420 660 L1420 543 L1088 543 L1088 300 L1019 300" fill="none" stroke="#534AB7" stroke-width="3" marker-end="url(#ap)"/>
+  <path d="M915 250 L915 172 L405 172 L405 261" fill="none" stroke="#534AB7" stroke-width="3" marker-end="url(#ap)"/>
+  <text x="1110" y="535" font-size="13" font-weight="bold" fill="#534AB7">Outbound: 0.0.0.0/0 → NAT</text>
+  <text x="600" y="164" font-size="13" font-weight="bold" fill="#534AB7">NAT swaps in its Elastic IP, then → IGW</text>
+
+  <rect x="40" y="420" width="330" height="200" rx="10" fill="#FFFFFF" stroke="#888780" stroke-width="1.2"/>
+  <text x="58" y="448" font-size="16" font-weight="bold" fill="#2C2C2A">Legend</text>
+  <line x1="58" y1="475" x2="110" y2="475" stroke="#A32D2D" stroke-width="3"/>
+  <text x="122" y="480" font-size="14" fill="#2C2C2A">Hop 1: laptop → bastion</text>
+  <line x1="58" y1="508" x2="110" y2="508" stroke="#A32D2D" stroke-width="3" stroke-dasharray="10 6"/>
+  <text x="122" y="513" font-size="14" fill="#2C2C2A">Hop 2: bastion → private</text>
+  <line x1="58" y1="541" x2="110" y2="541" stroke="#534AB7" stroke-width="3"/>
+  <text x="122" y="546" font-size="14" fill="#2C2C2A">Outbound via NAT</text>
+  <rect x="58" y="565" width="30" height="20" fill="#EAF3DE" stroke="#3B6D11"/>
+  <text x="98" y="580" font-size="14" fill="#2C2C2A">Public</text>
+  <rect x="170" y="565" width="30" height="20" fill="#E6F1FB" stroke="#185FA5"/>
+  <text x="210" y="580" font-size="14" fill="#2C2C2A">Private</text>
+  <rect x="58" y="593" width="30" height="20" fill="#FAEEDA" stroke="#854F0B"/>
+  <text x="98" y="608" font-size="14" fill="#2C2C2A">Route table</text>
+
+  <rect x="40" y="660" width="330" height="150" rx="10" fill="#FFFFFF" stroke="#888780" stroke-width="1.2"/>
+  <text x="58" y="688" font-size="16" font-weight="bold" fill="#2C2C2A">Security groups</text>
+  <text x="58" y="716" font-size="14" font-weight="bold" fill="#2C2C2A">bastion-sg</text>
+  <text x="58" y="737" font-size="14" fill="#2C2C2A">Inbound SSH 22 from My IP (/32)</text>
+  <text x="58" y="766" font-size="14" font-weight="bold" fill="#2C2C2A">private-sg</text>
+  <text x="58" y="787" font-size="14" fill="#2C2C2A">Inbound SSH 22 from bastion-sg</text>
+</svg>
