@@ -1,0 +1,47 @@
+{
+  "info": {
+    "name": "PropertyLite Serverless API (Week 7)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://08xbwl2f0i.execute-api.us-east-1.amazonaws.com"
+    }
+  ],
+  "item": [
+    {
+      "name": "Get property R100234 (exists)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/properties/R100234",
+          "host": ["{{base_url}}"],
+          "path": ["properties", "R100234"]
+        }
+      }
+    },
+    {
+      "name": "Get property R100235 (exists)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/properties/R100235",
+          "host": ["{{base_url}}"],
+          "path": ["properties", "R100235"]
+        }
+      }
+    },
+    {
+      "name": "Get property FAKE (does not exist, returns {})",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/properties/FAKE",
+          "host": ["{{base_url}}"],
+          "path": ["properties", "FAKE"]
+        }
+      }
+    }
+  ]
+}
